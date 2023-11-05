@@ -33,10 +33,10 @@ public class Product {
   private Double unitPrice;
 
   private Integer quantityInStock;
-
+  //todo you can use jpa annotation wille be automatic insert date
   @Temporal(TemporalType.TIMESTAMP)
   private LocalDateTime creationDate;
-
+//todo you can use jpa annotation wille be automatic update this field
   @Temporal(TemporalType.TIMESTAMP)
   private LocalDateTime modificationDate;
   private Integer quantityThreshold;

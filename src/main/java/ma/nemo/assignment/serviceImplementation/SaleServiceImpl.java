@@ -27,6 +27,9 @@ public class SaleServiceImpl implements SaleService {
     private final TransactionMapper transactionMapper;
     private final SaleMapper saleMapper;
 
+    //todo transaction same prob
+    //todo save product after update
+    //todo maybe this method transactionnal
     @Override
     public SaleDTO addSale(SaleDTO saleDTO) throws ProductNotFound, ProductQuantityNotInStock {
         Product product = productService.getProductByCode(saleDTO.getProductCode());

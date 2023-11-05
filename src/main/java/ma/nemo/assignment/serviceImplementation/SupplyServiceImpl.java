@@ -30,7 +30,8 @@ public class SupplyServiceImpl implements SupplyService {
     private final TransactionMapper transactionMapper;
     private final ProductMapper productMapper;
 
-
+//todo fatima delete product check
+    //todo fatima why create history in this service
     @Override
     public SupplyDTO addProductToInventory(SupplyDTO supplyDTO) throws ProductNotFound {
         Product product = productService.getProductByCode(supplyDTO.getProductCode());
@@ -65,6 +66,7 @@ public class SupplyServiceImpl implements SupplyService {
 
     @Override
     public List<ProductDto> getProductsNearExpiryDate(int thresholdDays) {
+        //todo maybe serch by date less then end
         LocalDate currentDate = LocalDate.now();
         LocalDateTime thresholdStartDate = LocalDate.now().atStartOfDay(); // Start of the current day
         LocalDateTime thresholdEndDate = currentDate.plusDays(thresholdDays).atTime(23, 59, 59); // End of the specified day

@@ -17,11 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/return")
 @RequiredArgsConstructor
 @Slf4j
+//todo like othed controller prob
 public class ReturnProductController {
     private final ReturnProductService returnProductService;
     @PostMapping
     public ResponseEntity<?> addReturnProduct(@Valid @RequestBody ReturnProductDTO returnProductDTO) throws ProductNotFound {
-        log.info("Return Product to stock : " + returnProductDTO.getProductCode());
+        log.info("Return Product to stock : {}", returnProductDTO.getProductCode());
         return new ResponseEntity<>(returnProductService.returnProduct(returnProductDTO), HttpStatus.CREATED);
     }
 }

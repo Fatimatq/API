@@ -25,6 +25,7 @@ public class ReturnProductServiceImpl implements ReturnProductService {
     private final TransactionHistoryService transactionHistoryService;
     private final TransactionMapper transactionMapper;
     private final ReturnProductMapper returnProductMapper;
+    //todo same prob of sale service
     @Override
     public ReturnProductDTO returnProduct(ReturnProductDTO returnProductDTO) throws ProductNotFound {
         Product product = productService.getProductByCode(returnProductDTO.getProductCode());
@@ -39,7 +40,7 @@ public class ReturnProductServiceImpl implements ReturnProductService {
         returnProduct.setReturnQuantity(returnProductDTO.getQuantity());
 
         returnProductRepository.save(returnProduct);
-
+//todo add method to product o minus and plus quantity
         Integer newQuantity = returnProductDTO.getQuantity() + product.getQuantityInStock();
         product.setQuantityInStock(newQuantity);
         product.setModificationDate(LocalDateTime.now());

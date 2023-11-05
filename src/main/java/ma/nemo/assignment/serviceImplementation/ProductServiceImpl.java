@@ -53,7 +53,8 @@ public class ProductServiceImpl implements ProductService {
                 .map(productMapper::toDTO)
                 .collect(Collectors.toList());
     }
-
+//todo fatima why optional and throw if not exit
+    //todo fatima replace sout by log
     @Override
     public Optional<ProductDto> getProductById(Long id) throws ProductNotFound {
         Optional<Product> product = productRepository.findById(id);
@@ -66,12 +67,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductByCode(String productCode) throws ProductNotFound {
-        Product product= productRepository.findByProductCode(productCode);
-        if(product != null){
-            return product;
-        }else {
-            throw  new ProductNotFound("Product with id: " + productCode + " not found");
-        }
+        return productRepository.findByProductCode(productCode)
+                .orElseThrow(()->new ProductNotFound("Product with id: " + productCode + " not found"));
     }
 
     @Override

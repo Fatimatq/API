@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 public class SaleController {
-
+//todo fatima like other controller delete api and use response status
     private final SaleService saleService;
     @PostMapping
     public ResponseEntity<?> addSale(@Valid @RequestBody SaleDTO saleDTO) throws ProductNotFound, ProductQuantityNotInStock{
